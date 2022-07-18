@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/trackerFragment">
+
+    <fragment
+        android:id="@+id/trackerFragment"
+        android:name="com.aristotele.sleeptracker2022.sleeptracker.TrackerFragment"
+        android:label="fragment_tracker"
+        tools:layout="@layout/fragment_tracker" >
+        <action
+            android:id="@+id/action_trackerFragment_to_qualityFragment"
+            app:destination="@id/qualityFragment" />
+        <action
+            android:id="@+id/action_trackerFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/qualityFragment"
+        android:name="com.aristotele.sleeptracker2022.sleepquality.QualityFragment"
+        android:label="fragment_quality"
+        tools:layout="@layout/fragment_quality" >
+        <action
+            android:id="@+id/action_qualityFragment_to_trackerFragment"
+            app:destination="@id/trackerFragment" />
+        <argument
+            android:name="sleepNightKey"
+            app:argType="long" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.aristotele.sleeptracker2022.sleepdetail.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" />
+</navigation>

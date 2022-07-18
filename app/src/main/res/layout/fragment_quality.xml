@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    tools:context=".sleepquality.QualityFragment">
+
+
+    <data>
+
+        <variable
+            name="sleepQualityViewModel"
+            type="com.aristotele.sleeptracker2022.sleepquality.QualityViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#BAD8F1">
+
+        <ImageButton
+            android:id="@+id/imageButton1"
+            android:onClick="@{() -> sleepQualityViewModel.onSetSleepQuality(0)}"
+
+            android:layout_width="133dp"
+            android:layout_height="139dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="48dp"
+            android:foregroundGravity="fill"
+            android:src="@drawable/ic_sleep_0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_sleep_0" />
+
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:onClick="@{() -> sleepQualityViewModel.onSetSleepQuality(1)}"
+
+            android:layout_width="137dp"
+            android:layout_height="138dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="36dp"
+            android:foregroundGravity="fill"
+            android:src="@drawable/ic_sleep_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.492"
+            app:layout_constraintStart_toEndOf="@+id/imageButton1"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_sleep_1" />
+
+        <ImageButton
+            android:id="@+id/imageButton3"
+            android:onClick="@{() -> sleepQualityViewModel.onSetSleepQuality(2)}"
+
+            android:layout_width="138dp"
+            android:layout_height="145dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="24dp"
+            android:foregroundGravity="fill"
+            android:src="@drawable/ic_sleep_2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageButton1"
+            tools:src="@drawable/ic_sleep_2" />
+
+        <ImageButton
+            android:id="@+id/imageButton4"
+            android:onClick="@{() -> sleepQualityViewModel.onSetSleepQuality(3)}"
+
+            android:layout_width="124dp"
+            android:layout_height="137dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="36dp"
+            android:foregroundGravity="fill"
+            android:src="@drawable/ic_sleep_3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.545"
+            app:layout_constraintStart_toEndOf="@+id/imageButton3"
+            app:layout_constraintTop_toBottomOf="@+id/imageButton2"
+            tools:src="@drawable/ic_sleep_3" />
+
+        <ImageButton
+            android:id="@+id/imageButton5"
+            android:onClick="@{() -> sleepQualityViewModel.onSetSleepQuality(4)}"
+
+            android:layout_width="130dp"
+            android:layout_height="127dp"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="32dp"
+            android:foregroundGravity="fill"
+            android:src="@drawable/ic_sleep_4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageButton3"
+            tools:src="@drawable/ic_sleep_4" />
+
+        <ImageButton
+            android:id="@+id/imageButton6"
+            android:onClick="@{() -> sleepQualityViewModel.onSetSleepQuality(5)}"
+
+            android:layout_width="130dp"
+            android:layout_height="127dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="40dp"
+            android:foregroundGravity="fill"
+            android:src="@drawable/ic_sleep_5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.626"
+            app:layout_constraintStart_toEndOf="@+id/imageButton5"
+            app:layout_constraintTop_toBottomOf="@+id/imageButton4"
+            tools:src="@drawable/ic_sleep_5" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

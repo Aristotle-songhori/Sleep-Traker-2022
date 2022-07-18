@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".sleeptracker.TrackerFragment">
+
+    <data>
+        <variable
+            name="sleepTrackerViewModel"
+            type="com.aristotele.sleeptracker2022.sleeptracker.TrackerViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ACF2AF">
+
+        <Button
+            android:id="@+id/button_start"
+            android:onClick="@{() -> sleepTrackerViewModel.onStartTracking()}"
+            android:enabled="@{sleepTrackerViewModel.startButtonVisible}"
+
+            android:layout_width="158dp"
+            android:layout_height="49dp"
+            android:text="start"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.126"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.049" />
+
+        <Button
+            android:id="@+id/button_stop"
+            android:onClick="@{() -> sleepTrackerViewModel.onStopTracking()}"
+            android:enabled="@{sleepTrackerViewModel.stopButtonVisible}"
+
+
+            android:layout_width="152dp"
+            android:layout_height="54dp"
+            android:text="stop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.938"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.042" />
+
+        <Button
+            android:id="@+id/button_del"
+            android:onClick="@{() -> sleepTrackerViewModel.onClear()}"
+            android:enabled="@{sleepTrackerViewModel.clearButtonVisible}"
+
+
+            android:layout_width="191dp"
+            android:layout_height="57dp"
+            android:text="del all"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.554"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_data"
+            app:layout_constraintVertical_bias="0.15" />
+
+        <TextView
+            android:text="@{sleepTrackerViewModel.sexyStringSpanned}"
+
+            android:id="@+id/textView_data"
+            android:layout_width="344dp"
+            android:layout_height="360dp"
+            android:background="#EFF2CC"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.626"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_stop"
+            app:layout_constraintVertical_bias="0.177" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
