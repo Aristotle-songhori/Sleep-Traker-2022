@@ -4,11 +4,16 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/testAppKotlin/SleepTracker2022/app/src/main/res/drawable-v24/ic_sleep_0.xml" value="0.1355" />
+        <entry key="..\:/testAppKotlin/SleepTracker2022/app/src/main/res/drawable-v24/ic_sleep_active.xml" value="0.1845" />
         <entry key="..\:/testAppKotlin/SleepTracker2022/app/src/main/res/layout/activity_main.xml" value="0.2736212056434374" />
         <entry key="..\:/testAppKotlin/SleepTracker2022/app/src/main/res/layout/fragment_detail.xml" value="0.2547597461468722" />
         <entry key="..\:/testAppKotlin/SleepTracker2022/app/src/main/res/layout/fragment_quality.xml" value="0.24365942028985507" />
         <entry key="..\:/testAppKotlin/SleepTracker2022/app/src/main/res/layout/fragment_sleep_tracker.xml" value="0.23899102180418982" />
-        <entry key="..\:/testAppKotlin/SleepTracker2022/app/src/main/res/layout/fragment_tracker.xml" value="0.20521590423257802" />
+        <entry key="..\:/testAppKotlin/SleepTracker2022/app/src/main/res/layout/fragment_tracker.xml" value="0.33" />
+        <entry key="..\:/testAppKotlin/SleepTracker2022/app/src/main/res/layout/header.xml" value="0.2702009405728944" />
+        <entry key="..\:/testAppKotlin/SleepTracker2022/app/src/main/res/layout/list_item_sleep_night.xml" value="0.2702009405728944" />
+        <entry key="..\:/testAppKotlin/SleepTracker2022/app/src/main/res/layout/singel_item.xml" value="0.5" />
+        <entry key="..\:/testAppKotlin/SleepTracker2022/app/src/main/res/layout/text_item_view.xml" value="0.1671654553227875" />
       </map>
     </option>
   </component>

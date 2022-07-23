@@ -24,13 +24,16 @@ import android.text.Spanned
 import androidx.core.text.HtmlCompat
 import com.aristotele.sleeptracker2022.database.SleepNight
 import java.text.SimpleDateFormat
+import java.util.*
+import java.util.concurrent.TimeUnit
 
 /**
- * These functions create a formatted string that can be set in a TextView.
+ * اینجا یه سری فانکشن هست که میاد داده ها تایم و زمان و غیره رو به استرینگ تبدیل میکنه بتونیم در تکس ویو استفاده کنیم
  */
 
 /**
  * Returns a string representing the numeric quality rating.
+ * یه عدد میگیره و بعد به نوشته کیفیت خواب تبدیل میکنه
  */
 fun convertNumericQualityToString(quality: Int, resources: Resources): String {
     var qualityString = resources.getString(R.string.three_ok)
@@ -45,10 +48,11 @@ fun convertNumericQualityToString(quality: Int, resources: Resources): String {
     return qualityString
 }
 
-
 /**
  * Take the Long milliseconds returned by the system and stored in Room,
  * and convert it to a nicely formatted string for display.
+ *
+ * تایم رو بر اساس لانگ میگیره و به داده نمایشی استرینگ تبدیل میکنه
  *
  * EEEE - Display the long letter version of the weekday
  * MMM - Display the letter abbreviation of the nmotny
@@ -61,18 +65,10 @@ fun convertLongToDateString(systemTime: Long): String {
             .format(systemTime).toString()
 }
 
+
 /**
- * Takes a list of SleepNights and converts and formats it into one string for display.
- *
- * For display in a TextView, we have to supply one string, and styles are per TextView, not
- * applicable per word. So, we build a formatted string using HTML. This is handy, but we will
- * learn a better way of displaying this data in a future lesson.
- *
- * @param   nights - List of all SleepNights in the database.
- * @param   resources - Resources object for all the resources defined for our app.
- *
- * @return  Spanned - An interface for text that has formatting attached to it.
- *           See: https://developer.android.com/reference/android/text/Spanned
+ * یه لیستی از داده ها میگیره و اونها رو به صورت نوشته تبدیل میکنه و نمایش میده
+ * که خیلی باحاله و کامل
  */
 
 fun formatNights(nights: List<SleepNight>, resources: Resources): Spanned {
@@ -98,9 +94,32 @@ fun formatNights(nights: List<SleepNight>, resources: Resources): Spanned {
             }
         }
     }
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-        return Html.fromHtml(sb.toString(), Html.FROM_HTML_MODE_LEGACY)
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+        Html.fromHtml(sb.toString(), Html.FROM_HTML_MODE_LEGACY)
     } else {
-        return HtmlCompat.fromHtml(sb.toString(), HtmlCompat.FROM_HTML_MODE_LEGACY)
+        HtmlCompat.fromHtml(sb.toString(), HtmlCompat.FROM_HTML_MODE_LEGACY)
+    }
+}
+
+private val ONE_MINUTE_MILLIS = TimeUnit.MILLISECONDS.convert(1, TimeUnit.MINUTES)
+private val ONE_HOUR_MILLIS = TimeUnit.MILLISECONDS.convert(1, TimeUnit.HOURS)
+
+//این زمان رو به تکس تبدیل میکنه
+fun convertDurationToFormatted(startTimeMilli: Long, endTimeMilli: Long, res: Resources): String {
+    val durationMilli = endTimeMilli - startTimeMilli
+    val weekdayString = SimpleDateFormat("EEEE", Locale.getDefault()).format(startTimeMilli)
+    return when {
+        durationMilli < ONE_MINUTE_MILLIS -> {
+            val seconds = TimeUnit.SECONDS.convert(durationMilli, TimeUnit.MILLISECONDS)
+            res.getString(R.string.seconds_length, seconds, weekdayString)
+        }
+        durationMilli < ONE_HOUR_MILLIS -> {
+            val minutes = TimeUnit.MINUTES.convert(durationMilli, TimeUnit.MILLISECONDS)
+            res.getString(R.string.minutes_length, minutes, weekdayString)
+        }
+        else -> {
+            val hours = TimeUnit.HOURS.convert(durationMilli, TimeUnit.MILLISECONDS)
+            res.getString(R.string.hours_length, hours, weekdayString)
+        }
     }
 }

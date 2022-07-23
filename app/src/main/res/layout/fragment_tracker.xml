@@ -19,63 +19,58 @@
 
         <Button
             android:id="@+id/button_start"
-            android:onClick="@{() -> sleepTrackerViewModel.onStartTracking()}"
-            android:enabled="@{sleepTrackerViewModel.startButtonVisible}"
-
             android:layout_width="158dp"
             android:layout_height="49dp"
+
+            android:enabled="@{sleepTrackerViewModel.startButtonVisible}"
+            android:onClick="@{() -> sleepTrackerViewModel.onStartTracking()}"
             android:text="start"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.126"
+            app:layout_constraintEnd_toStartOf="@+id/button_stop"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.049" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/button_stop"
-            android:onClick="@{() -> sleepTrackerViewModel.onStopTracking()}"
+            android:layout_width="154dp"
+            android:layout_height="48dp"
+
+
+            android:layout_marginEnd="16dp"
             android:enabled="@{sleepTrackerViewModel.stopButtonVisible}"
-
-
-            android:layout_width="152dp"
-            android:layout_height="54dp"
+            android:onClick="@{() -> sleepTrackerViewModel.onStopTracking()}"
             android:text="stop"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.938"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.042" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/button_del"
-            android:onClick="@{() -> sleepTrackerViewModel.onClear()}"
-            android:enabled="@{sleepTrackerViewModel.clearButtonVisible}"
-
-
             android:layout_width="191dp"
             android:layout_height="57dp"
+
+
+            android:enabled="@{sleepTrackerViewModel.clearButtonVisible}"
+            android:onClick="@{() -> sleepTrackerViewModel.onClear()}"
             android:text="del all"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.554"
+            app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView_data"
-            app:layout_constraintVertical_bias="0.15" />
+            app:layout_constraintTop_toBottomOf="@+id/recyclerView"
+            app:layout_constraintVertical_bias="0.428" />
 
-        <TextView
-            android:text="@{sleepTrackerViewModel.sexyStringSpanned}"
-
-            android:id="@+id/textView_data"
-            android:layout_width="344dp"
-            android:layout_height="360dp"
-            android:background="#EFF2CC"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="327dp"
+            android:layout_height="378dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="#A7CEEC"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.626"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_stop"
-            app:layout_constraintVertical_bias="0.177" />
+            app:layout_constraintTop_toBottomOf="@+id/button_stop">
+
+
+        </androidx.recyclerview.widget.RecyclerView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

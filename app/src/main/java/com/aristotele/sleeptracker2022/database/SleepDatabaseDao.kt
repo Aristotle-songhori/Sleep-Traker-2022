@@ -25,6 +25,14 @@ import androidx.room.Update
 /**
  *دقت کنید اگر از نسخه خاص کتابخونه روم استفاده نکنید و آخرین نسخه نباشه نمیتونید اینجا جلوتر برید
  * ارور پشت ارور که آفا ساسپند رو نمیشناسه و ...
+ *  // دقت کنید اگر این نسخه نباشه نوتیشن ها رو در روم نمیخونه و داستان میشه وهمش خطامیده
+implementation "androidx.activity:activity-ktx:1.5.0"
+// بعد ساسپند فانکشن هم نمیتونیم داشته باشیم توی دیتابیس
+def roomVersion = "2.5.0-alpha02"
+// optional - Kotlin Extensions and Coroutines support for Room
+implementation("androidx.room:room-ktx:$roomVersion")
+kapt("androidx.room:room-compiler:$roomVersion")
+testImplementation "androidx.room:room-testing:$roomVersion"
  */
 @Dao
 interface SleepDatabaseDao {
@@ -45,5 +53,11 @@ interface SleepDatabaseDao {
 
     @Query("SELECT * FROM daily_sleep_quality_table ORDER BY nightId DESC LIMIT 1")
     suspend fun getTonight(): SleepNight?
+
+    /**
+     * Selects and returns the night with given nightId.
+     */
+    @Query("SELECT * from daily_sleep_quality_table WHERE nightId = :key")
+    fun getNightWithId(key: Long): LiveData<SleepNight>
 }
 

@@ -14,7 +14,11 @@ class TrackerViewModel(
 
     private var tonight = MutableLiveData<SleepNight?>()
 
-    private val nights = database.getAllNights()
+     val nights = database.getAllNights()
+
+
+
+
 
 
     /**
@@ -52,22 +56,10 @@ class TrackerViewModel(
 
 
 
-    private val _navigateToSleepQuality = MutableLiveData<SleepNight>()
-
-
     fun doneShowingSnackbar() {
         _showSnackbarEvent.value = false
     }
 
-
-
-    val navigateToSleepQuality: LiveData<SleepNight>
-        get() = _navigateToSleepQuality
-
-
-    fun doneNavigating() {
-        _navigateToSleepQuality.value = null
-    }
 
 
     /**
@@ -76,6 +68,9 @@ class TrackerViewModel(
      */
     init {
         initializeTonight()
+
+
+
     }
 
     private fun initializeTonight() {
@@ -138,4 +133,60 @@ class TrackerViewModel(
         _showSnackbarEvent.value = true
     }
 
+
+
+
+
+
+
+    private val _navigateToSleepQuality = MutableLiveData<SleepNight>()
+    val navigateToSleepQuality: LiveData<SleepNight>
+        get() = _navigateToSleepQuality
+    fun doneNavigating() {
+        _navigateToSleepQuality.value = null
+    }
+
+    private val _navigateToSleepDataQuality = MutableLiveData<Long>()
+    val navigateToSleepDataQuality
+        get() = _navigateToSleepDataQuality
+    fun onSleepNightClicked(id: Long) {
+        _navigateToSleepDataQuality.value = id
+    }
+
+    fun onSleepDataQualityNavigated() {
+        _navigateToSleepDataQuality.value = null
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
+

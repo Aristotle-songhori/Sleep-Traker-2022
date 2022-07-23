@@ -1,10 +1,15 @@
 package com.aristotele.sleeptracker2022.sleepquality
 
+
+
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.aristotele.sleeptracker2022.database.SleepDatabaseDao
 
-class SleepQualityViewModelFactory(
+/**
+ * همیشه ثابته و وقتی دیتابیس داریم یه پایه کار دیتابیسه و یه داده دیگه که اینجا آیدی اون شب خاص در دیتابیس هست
+ */
+class QualityViewModelFactory(
     private val sleepNightKey: Long,
     private val dataSource: SleepDatabaseDao
 ) : ViewModelProvider.Factory {
@@ -16,3 +21,4 @@ class SleepQualityViewModelFactory(
         throw IllegalArgumentException("Unknown ViewModel class")
     }
 }
+

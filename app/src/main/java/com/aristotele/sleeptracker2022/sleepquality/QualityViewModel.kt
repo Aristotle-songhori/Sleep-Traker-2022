@@ -9,6 +9,8 @@ import kotlinx.coroutines.launch
 
 class QualityViewModel(private val sleepNightKey: Long = 0L, val database: SleepDatabaseDao) : ViewModel() {
 
+
+
     private val _navigateToSleepTracker = MutableLiveData<Boolean?>()
     val navigateToSleepTracker: LiveData<Boolean?>
         get() = _navigateToSleepTracker
@@ -16,20 +18,32 @@ class QualityViewModel(private val sleepNightKey: Long = 0L, val database: Sleep
         _navigateToSleepTracker.value = null
     }
 
+
     /**
-     * Sets the sleep quality and updates the database.
-     * Then navigates back to the SleepTrackerFragment.
+     * وقتی رو یه عکس کلیک میشه آیدیش رو ساب کلیک میاد اینجا
+     * حتما باید توی کو روتین باشه چون دیتابیس ها از ساسپند فانکشن هستن
      */
 
+
     fun onSetSleepQuality(quality: Int) {
+
         viewModelScope.launch {
+
+            // یه آبجکت میسازیم و از دیتابیس اون آیدی میگیریم میریزسم توش
             val tonight = database.get(sleepNightKey) ?: return@launch
+
+//            کیفیتی که رسیده رو میندازیم توش و آپدیتش میکنیم چون همیشه -1 هست
             tonight.sleepQuality = quality
+
+            //حالا دیتابیس رو فعال میکنیم
             database.update(tonight)
 
             // Setting this state variable to true will alert the observer and trigger navigation.
             _navigateToSleepTracker.value = true
+
         }
+
+
     }
 }
 

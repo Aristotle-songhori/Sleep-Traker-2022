@@ -1,75 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-
-    tools:context=".sleepdetail.DetailFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!-- Data to make available to the XML via data binding. In this case,
+         the whole ViewModel, so that we can access the LiveData,
+         click handlers, and state variables. -->
+    <data>
+        <variable
+            name="sleepDetailViewModel"
+            type="com.aristotele.sleeptracker2022.sleepdetail.SleepDetailViewModel" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#F18787">
+        tools:context=".sleepdetail.DetailFragment">
 
-        <ImageButton
-            android:id="@+id/imageButton"
+        <ImageView
+            android:id="@+id/quality_image"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="56dp"
+            android:layout_marginEnd="8dp"
+            app:sleepImage="@{sleepDetailViewModel.night}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/quality_string"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/quality_image"
+            app:sleepQualityString="@{sleepDetailViewModel.night}" />
+
+        <TextView
+            android:id="@+id/sleep_length"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/quality_string"
+            app:sleepDurationFormatted="@{sleepDetailViewModel.night}" />
+
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:backgroundTint="#AAB5F4"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@tools:sample/avatars" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="228dp"
-            android:layout_height="61dp"
-            android:layout_marginTop="36dp"
-            android:background="#C6E8EC"
-            android:text="TextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageButton" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="228dp"
-            android:layout_height="61dp"
-            android:layout_marginTop="40dp"
-            android:background="#B9D6EC"
-            android:text="TextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="228dp"
-            android:layout_height="61dp"
-            android:layout_marginTop="48dp"
-            android:background="#A5F1EA"
-            android:text="TextView"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="32dp"
+            android:onClick="@{() -> sleepDetailViewModel.onClose()}"
+            android:text="@string/close"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2"
-            app:layout_constraintVertical_bias="0.025" />
+            app:layout_constraintStart_toStartOf="parent" />
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="228dp"
-            android:layout_height="61dp"
-            android:layout_marginTop="40dp"
-            android:background="#F1C6B9"
-            android:text="TextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
